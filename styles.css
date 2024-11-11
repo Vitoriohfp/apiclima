@@ -131,3 +131,9 @@
     background: linear-gradient(135deg, #feb47b, #ff7e5f);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.error {
+    color: #fd4747;
+    font-size: 14px;
+    display: none;
+}

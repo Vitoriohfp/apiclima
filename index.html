@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+
+     <!-- links -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Link para os ícones da Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div class="container">
@@ -14,18 +16,59 @@
             <h2>Cadastrar</h2>
             <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Nome" name="username">
+                <input type="text" id="username" placeholder="Nome" name="username">
+                <span class="error" id="nameError">Por favor, digite seu nome.</span>
             </div>
             <div class="input-field">
                 <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="Email" name="email">
+                <input type="email" id="email" placeholder="Email" name="email">
+                <span class="error" id="emailError">Por favor, digite seu email.</span>
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Senha" name="password">
+                <input type="password" id="password" placeholder="Senha" name="password">
+                <span class="error" id="passwordError">Por favor, digite sua senha.</span>
             </div>
             <button class="submit-btn">Cadastrar</button>
         </div>
     </div>
+
+    <script>
+        
+        document.querySelector('.submit-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+
+    // se o usuario errar e colocar de novo some os erros
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('emailError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
+
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            var valido = true;
+
+    //parte do erro utilizando if, se o usuario nao colocar nenhum dado        
+            if (username === "") { 
+                document.getElementById('nameError').style.display = 'block';
+                valido = false;
+            }
+            if (email === "") {
+                document.getElementById('emailError').style.display = 'block';
+                valido = false;
+            }
+            if (password === "") {
+                document.getElementById('passwordError').style.display = 'block';
+                valido = false;
+            }
+
+            if (valido) {
+                alert('Você será redirecionado');
+                window.location.href = 'climatela.html';
+            }
+        });
+    </script>
+
 </body>
 </html>
