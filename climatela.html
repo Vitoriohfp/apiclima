@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Clima</title>
+    <title>Info das API</title>
     <link rel="stylesheet" href="styleapi.css">
 </head>
 <body>
@@ -11,18 +11,63 @@
         <header>
             <img src="logo.png" alt="Logo da Climatela" class="logo">
         </header>
-        <div class="button-container">
-            <button onclick="showInfo('wind')">WIND</button>
-            <button onclick="showInfo('temperature')">TEMPERATURE</button>
-            <button onclick="showInfo('rain')">RAIN</button>
-            <button onclick="showInfo('dangers')">DANGERS</button>
+            <div class="button-container">
+                <input 
+                    type="text" 
+                    id="cep" 
+                    placeholder="Digite sua cidade" 
+                    style="width: 300px; padding: 10px; font-size: 18px; border-radius: 25px; border: 2px solid white; background: transparent; color: white; text-align: center;">
+                <button 
+                    id="searchWeather" 
+                    style="padding: 10px 20px; font-size: 18px; border-radius: 25px; background: transparent; border: 2px solid white; color: white; cursor: pointer;">
+                    IR
+                </button>
         </div>
     </div>
 
     <script>
-        function showInfo(type) {
-    alert(`Você clicou no botão: ${type.toUpperCase()}`);
-}
+          document.getElementById('searchWeather').addEventListener('click', function () {
+            const cep = document.getElementById('cep').value.trim();
+
+            if (!cep) {
+                alert("Por favor, insira uma cidade válida!");
+                return;
+            }
+
+            const apiKey = "bff19f1da2f73a1fd7bfa43361f70afe";
+            const url = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${cep}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert("Erro: cidade inválida ou dados não encontrados!");
+                        return;
+                    }
+
+                    //informações básicas
+                    const descricao = data.current.weather_descriptions[0];
+                    const temperatura = data.current.temperature;
+                    const vento = data.current.wind_speed;
+                    const umidade = data.current.humidity;
+                    const sensacao = data.current.feelslike
+                    const horarioLocal = data.location.localtime;
+                   alert(`
+Clima: ${descricao}
+Temperatura: ${temperatura}°C
+Vento: ${vento} km/h
+Umidade: ${umidade}%
+Sensação Térmica: ${sensacao}°C
+Horário Local: ${horarioLocal}
+
+                    `); //alerta emitindo as info da api 
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar os dados:", error);
+                    alert("Erro ao conectar com a API. Tente novamente mais tarde.");
+                });
+        });
+
     </script>
 </body>
 </html>
