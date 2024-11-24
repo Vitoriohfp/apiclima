@@ -5,28 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info das API</title>
     <link rel="stylesheet" href="styleapi.css">
+   
 </head>
 <body>
     <div class="container">
         <header>
             <img src="logo.png" alt="Logo da Climatela" class="logo">
         </header>
-            <div class="button-container">
-                <input 
-                    type="text" 
-                    id="cep" 
-                    placeholder="Digite sua cidade" 
-                    style="width: 300px; padding: 10px; font-size: 18px; border-radius: 25px; border: 2px solid white; background: transparent; color: white; text-align: center;">
-                <button 
-                    id="searchWeather" 
-                    style="padding: 10px 20px; font-size: 18px; border-radius: 25px; background: transparent; border: 2px solid white; color: white; cursor: pointer;">
-                    IR
-                </button>
+        <div class="button-container">
+            <input 
+                type="text" 
+                id="cep" 
+                placeholder="Digite sua cidade" 
+                style="width: 300px; padding: 10px; font-size: 18px; border-radius: 25px; border: 2px solid white; background: transparent; color: white; text-align: center;">
+            <button 
+                id="searchWeather" 
+                style="padding: 10px 20px; font-size: 18px; border-radius: 25px; background: transparent; border: 2px solid white; color: white; cursor: pointer;">
+                IR
+            </button>
+        </div>
+    </div>
+    <div class="modal" id="weatherModal">
+        <div class="modal-content">
+            <h2>Informações Climáticas</h2>
+            <p id="weatherData"></p>
+            <button class="modal-close" id="closeModal">Fechar</button>
         </div>
     </div>
 
     <script>
-          document.getElementById('searchWeather').addEventListener('click', function () {
+        document.getElementById('searchWeather').addEventListener('click', function () {
             const cep = document.getElementById('cep').value.trim();
 
             if (!cep) {
@@ -45,22 +53,26 @@
                         return;
                     }
 
-                    //informações básicas
+                    const cidade = data.location.name;
                     const descricao = data.current.weather_descriptions[0];
                     const temperatura = data.current.temperature;
                     const vento = data.current.wind_speed;
                     const umidade = data.current.humidity;
-                    const sensacao = data.current.feelslike
+                    const sensacao = data.current.feelslike;
                     const horarioLocal = data.location.localtime;
-                   alert(`
-Clima: ${descricao}
-Temperatura: ${temperatura}°C
-Vento: ${vento} km/h
-Umidade: ${umidade}%
-Sensação Térmica: ${sensacao}°C
-Horário Local: ${horarioLocal}
 
-                    `); //alerta emitindo as info da api 
+                    const weatherInfo = `
+                        <strong>Cidade:</strong> ${cidade}<br>
+                        <strong>Clima:</strong> ${descricao}<br>
+                        <strong>Temperatura:</strong> ${temperatura}°C<br>
+                        <strong>Sensação Térmica:</strong> ${sensacao}°C<br>
+                        <strong>Vento:</strong> ${vento} km/h<br>
+                        <strong>Umidade:</strong> ${umidade}%<br>
+                        <strong>Horário Local:</strong> ${horarioLocal}
+                    `;
+
+                    document.getElementById('weatherData').innerHTML = weatherInfo;
+                    document.getElementById('weatherModal').style.display = 'flex';
                 })
                 .catch(error => {
                     console.error("Erro ao buscar os dados:", error);
@@ -68,6 +80,9 @@ Horário Local: ${horarioLocal}
                 });
         });
 
+        document.getElementById('closeModal').addEventListener('click', function () {
+            document.getElementById('weatherModal').style.display = 'none';
+        });
     </script>
 </body>
 </html>

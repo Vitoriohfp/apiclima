@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background: linear-gradient(135deg, #0f314d, #75a8e7);
     overflow: hidden;
 }
 
@@ -79,7 +79,7 @@
 
 /* Efeito ao focar nos campos de entrada */
 .input-field input:focus {
-    border-color: #ff7e5f;
+    border-color: #5fa2ff;
     box-shadow: 0 0 8px rgba(255, 126, 95, 0.3);
 }
 
@@ -103,7 +103,7 @@
     font-size: 16px;
     color: #fff;
     cursor: pointer;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background: linear-gradient(135deg, #0f314d, #75a8e7);
     transition: background 0.3s, box-shadow 0.3s;
     margin-top: 10px;
     position: relative;
@@ -128,7 +128,7 @@
 }
 
 .submit-btn:hover {
-    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    background: linear-gradient(135deg, #0f314d, #75a8e7);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
