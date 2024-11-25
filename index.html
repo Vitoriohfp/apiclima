@@ -16,18 +16,18 @@
             <h2>Formulário</h2>
             <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" id="username" placeholder="Nome" name="username">
+                <input type="text" id="username" placeholder="Digite seu nome" name="username">
                 <span class="error" id="nameError">Por favor, digite seu nome.</span>
             </div>
             <div class="input-field">
                 <i class="fas fa-envelope"></i>
-                <input type="email" id="email" placeholder="Email" name="email">
+                <input type="email" id="email" placeholder="Digite seu email" name="email">
                 <span class="error" id="emailError">Por favor, digite seu email.</span>
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input type="text" id="password" placeholder="Pergunta" name="password">
-                <span class="error" id="passwordError">O que te trouxe aqui?</span>
+                <input type="text" id="password" placeholder="Qual sua idade?" name="password">
+                <span class="error" id="passwordError">Responda esta pergunta</span>
             </div>
             <button class="submit-btn">Avançar</button>
         </div>
@@ -64,7 +64,7 @@
             }
 
             if (valido) {
-                alert('Você será redirecionado');
+                alert('Obrigado por responder, redirecionando...');
                 window.location.href = 'climatela.html';
             }
         });
