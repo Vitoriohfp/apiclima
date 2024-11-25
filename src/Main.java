@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 public class Main {
     public static void main(String[] args) {
 
-       String apiKey = "bff19f1da2f73a1fd7bfa43361f70afe";
+       String apiKey = "4d043b4acb24b5a9329cd5a98de02fa7";
        String cidade = "Mossoro"; //Aqui a gente adiciona a cidade que a gente quer
 
         try {
