@@ -23,6 +23,11 @@
                 style="padding: 10px 20px; font-size: 18px; border-radius: 25px; background: transparent; border: 2px solid white; color: white; cursor: pointer;">
                 IR
             </button>
+            <button 
+                id="getLocationCity"
+                style="padding: 10px 20px; font-size: 18px; border-radius: 25px; background: transparent; border: 2px solid white; color: white; cursor: pointer;">
+                Onde estou
+            </button>
         </div>
     </div>
     <div class="modal" id="weatherModal">
@@ -79,6 +84,59 @@
                     alert("Erro ao conectar com a API. Tente novamente mais tarde.");
                 });
         });
+
+        // evento pra obter cidade 
+        document.getElementById('getLocationCity').addEventListener('click', function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(fetchCityByCoordinates, showError);
+            } else {
+                alert("Geolocalização não é suportada por este navegador.");
+            }
+        });
+
+        // Função para buscar a cidade latitude e longitude
+        function fetchCityByCoordinates(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            const apiKey = "4d043b4acb24b5a9329cd5a98de02fa7";
+            const url = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${lat},${lon}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert("Erro: não foi possível obter a cidade da sua localização.");
+                        return;
+                    }
+
+                    const cidade = data.location.name;
+                    alert(`Você está em: ${cidade}`);
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar os dados:", error);
+                    alert("Erro ao conectar com a API. Tente novamente mais tarde.");
+                });
+        }
+
+        // Função para mostrar erro caso não consiga pegar a localização
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("Usuário recusou a solicitação de geolocalização.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Localização não disponível.");
+                    break;
+                case error.TIMEOUT:
+                    alert("A solicitação para obter a localização excedeu o tempo limite.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("Ocorreu um erro desconhecido.");
+                    break;
+            }
+        }
+
 
         document.getElementById('closeModal').addEventListener('click', function () {
             document.getElementById('weatherModal').style.display = 'none';
