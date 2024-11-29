@@ -62,10 +62,15 @@ npm start
 Acesse em: http://application.properties/
 
 Rotas de Clima:
-- GET /api/clima/localizacao
-- POST /api/clima/inscricao
+- GET /api/clima/localizacao: Retorna o clima atual para uma determinada localização.
+- POST /api/clima/inscricao: Permite inscrição para receber atualizações de clima em tempo real.
   
- Contribuição
+ Contribuição:
+ - Adriel Torres
+ - Cauã Lucca
+ - Daniel Claudio
+ - Iago Kauedny
+ - Vitorio Honorato
 
 
 
