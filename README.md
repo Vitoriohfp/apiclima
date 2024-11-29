@@ -64,6 +64,7 @@ Acesse em: http://application.properties/
 Rotas de Clima:
 - GET /api/clima/localizacao
 - POST /api/clima/inscricao
+- 
  Contribuição
 
 
