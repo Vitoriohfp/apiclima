@@ -17,4 +17,41 @@
 - Spring Boot
 - RabbitMQ
 - PostgreSQL
+- Maven
 - APIs de Clima
+ # Front end
+- Reactjs
+
+Estrutura do codigo
+
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── com/projeto/clima/           # Pacote principal
+│   │   │   ├── controller/                  # Controladores da API
+│   │   │   ├── service/                     # Serviços para integração com APIs externas
+│   │   │   ├── model/                       # Modelos de dados
+│   │   │   ├── config/                      # Configurações e propriedades
+│   │   └── resources/
+│   │       ├── application.properties       # Configurações do Spring Boot
+├── README.md                                # Documentação do projeto
+├── pom.xml                                  # Dependências Maven
+
+# Como executar o projeto
+
+## Back end
+pré-requisitos: Java
+
+```bash
+# clonar repositório
+git clone https://github.com/seu-usuario/sistema-monitoramento-clima-java.git
+
+cd sistema-monitoramento-clima-java
+Configure as variáveis de ambiente ou edite o arquivo em  application.properties com suas credenciais de API e configurações do banco de dados.
+
+
+
+
+
+
+
