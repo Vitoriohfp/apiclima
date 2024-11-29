@@ -47,7 +47,24 @@ pré-requisitos: Java
 git clone https://github.com/seu-usuario/sistema-monitoramento-clima-java.git
 
 cd sistema-monitoramento-clima-java
-Configure as variáveis de ambiente ou edite o arquivo em  application.properties com suas credenciais de API e configurações do banco de dados.
+Configure as variáveis de ambiente ou edite o arquivo em application.properties com suas credenciais de API e configurações do banco de dados.
+
+Compile e execute o projeto:
+-/mvnw spring-boot:run
+```
+
+## Como usar
+
+Execute o comando:
+```bash
+npm start
+```
+Acesse em: http://application.properties/
+
+Rotas de Clima:
+- GET /api/clima/localizacao
+- POST /api/clima/inscricao
+ Contribuição
 
 
 
