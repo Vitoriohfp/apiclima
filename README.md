@@ -20,7 +20,7 @@
 - Maven
 - APIs de Clima
  # Front end
-- Reactjs
+- Java script
 
 Estrutura do codigo
 
@@ -59,7 +59,7 @@ Execute o comando:
 ```bash
 npm start
 ```
-Acesse em: http://application.properties/
+Acesse em: `http://localhost:3000`.
 
 Rotas de Clima:
 - GET /api/clima/localizacao: Retorna o clima atual para uma determinada localização.
